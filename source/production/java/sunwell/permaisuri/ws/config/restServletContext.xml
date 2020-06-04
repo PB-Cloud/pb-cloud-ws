@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+            http://www.springframework.org/schema/aop
+         	http://www.springframework.org/schema/aop/spring-aop.xsd">
+            
+    <!-- <bean name="webRequestInfo" class="aegwyn.core.web.model.WebRequestInfo" scope="request">
+    		<aop:scoped-proxy/>
+    </bean>
+            
+    <bean name="webApplicationContext" class="aegwyn.core.web.model.WebApplicationContext">
+    		<property name="webRequestInfo" ref="webRequestInfo" />
+    </bean>
+
+    <bean name="userSessionContainer" class="aegwyn.core.web.model.StandardUserSessionContainer">
+    		<property name="wac" ref="webApplicationContext" />
+    </bean> -->
+    
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+	  <property name="host" value="smtp.gmail.com" />  
+	    <property name="username" value="susantobenny50@gmail.com" />  
+	    <property name="password" value="oneandonly" />  
+	    <property name="javaMailProperties">  
+	       <props>  
+	              <prop key="mail.smtp.auth">true</prop>  
+	              <prop key="mail.smtp.socketFactory.port">465</prop>  
+	              <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>  
+	              <prop key="mail.smtp.port">465</prop>  
+	        </props>  
+	    </property>  
+	</bean>  
+<bean id="mailMail" class="sunwell.permaisuri.ws.controller.MailMail">  
+    <property name="mailSender" ref="mailSender" />  
+</bean>  
+
+</beans>
